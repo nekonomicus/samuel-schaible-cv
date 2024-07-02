@@ -13,7 +13,7 @@ async function askQuestion() {
     askButton.disabled = true;
     
     try {
-        const response = await fetch('https://your-vercel-deployment-url.vercel.app/ask', {
+        const response = await fetch('https://samuel-schaible-backend-cjqeb6ist-samuel-schaibles-projects.vercel.app', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
