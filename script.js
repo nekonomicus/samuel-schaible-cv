@@ -9,10 +9,10 @@ async function askQuestion() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer YOUR_API_KEY_HERE' // Replace with your actual API key
+                'Authorization': 'sk-proj-xsyFWTyV3JnLMwko1xANT3BlbkFJ8ctFEo9P5splwU8JGYIs' // Replace with your actual API key
             },
             body: JSON.stringify({
-                model: 'gpt-4-turbo-preview',
+                model: 'gpt-4-turbo',
                 messages: [
                     { role: 'system', content: 'You are an AI assistant that answers questions about Samuel Schaible based solely on the information provided on his website. Do not make up any information that is not explicitly stated on the website.' },
                     { role: 'user', content: question }
