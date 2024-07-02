@@ -1,1 +1,27 @@
+/* Existing styles remain the same */
 
+/* New styles for citation links */
+.citation-link {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+.citation-link:hover {
+    opacity: 0.7;
+}
+
+#publications ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#publications li {
+    margin-bottom: 15px;
+}
+
+/* Update existing dark mode styles */
+.dark-mode a {
+    color: inherit;
+}
