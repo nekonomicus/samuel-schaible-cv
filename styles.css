@@ -40,6 +40,7 @@ h2 {
 nav {
     background: linear-gradient(to bottom, #f6f6f6, #e0e0e0);
     border-bottom: 1px solid #ccc;
+    overflow-x: auto;
 }
 
 nav ul {
@@ -60,6 +61,7 @@ nav a {
     color: #333;
     text-decoration: none;
     transition: background-color 0.3s;
+    white-space: nowrap;
 }
 
 nav a:hover {
@@ -80,6 +82,12 @@ h3 {
     padding-bottom: 5px;
 }
 
+h4 {
+    color: #666;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 .profile-photo {
     display: block;
     width: 200px;
@@ -87,6 +95,10 @@ h3 {
     margin: 0 auto 20px;
     border: 1px solid #ccc;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+ul {
+    padding-left: 20px;
 }
 
 .citation-link {
@@ -105,6 +117,8 @@ h3 {
     border: 1px solid #ccc;
     border-radius: 3px;
     margin-bottom: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
 #ask-button {
@@ -114,6 +128,7 @@ h3 {
     padding: 10px 20px;
     border-radius: 3px;
     cursor: pointer;
+    font-size: 14px;
 }
 
 #ask-button:hover {
@@ -146,6 +161,8 @@ footer {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;
 }
 
 #dark-mode-toggle {
@@ -161,6 +178,7 @@ footer {
     background: linear-gradient(to bottom, #5a5a5a, #3d3d3d);
 }
 
+/* Dark mode styles */
 body.dark-mode {
     background: #222;
     color: #f0f0f0;
@@ -212,4 +230,74 @@ body.dark-mode {
     background: linear-gradient(to bottom, #2d2d2d, #222);
     border-top-color: #444;
     color: #999;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 600px) {
+    #container {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    header {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    nav {
+        padding: 5px 0;
+    }
+
+    nav a {
+        padding: 8px 12px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .profile-photo {
+        width: 150px;
+    }
+
+    #dark-mode-toggle, #back-to-top {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    #dark-mode-toggle {
+        top: 10px;
+        right: 10px;
+    }
+
+    #back-to-top {
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    nav a {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+
+    .profile-photo {
+        width: 120px;
+    }
 }
