@@ -19,7 +19,7 @@ async function askQuestion() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer YOUR_API_KEY_HERE' // Replace with your actual API key
+                'Authorization': 'sk-proj-gqUDg5xpcBti4HdqFi8RT3BlbkFJ1Iv7NO6Gyeyu68RhJwhu' // Replace with your actual API key
             },
             body: JSON.stringify({
                 model: 'gpt-4-turbo-preview',
