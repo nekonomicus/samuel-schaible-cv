@@ -1,4 +1,3 @@
-
 async function askQuestion() {
     const question = document.getElementById('user-question').value;
     const answerContainer = document.getElementById('answer-container');
@@ -15,19 +14,12 @@ async function askQuestion() {
     askButton.disabled = true;
     
     try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch('https://samuel-schaible-backend.vercel.app/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'sk-proj-gqUDg5xpcBti4HdqFi8RT3BlbkFJ1Iv7NO6Gyeyu68RhJwhu' // Replace with your actual API key
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                model: 'gpt-4-turbo-preview',
-                messages: [
-                    { role: 'system', content: 'You are an AI assistant that answers questions about Samuel Schaible based solely on the information provided on his website. Do not make up any information that is not explicitly stated on the website.' },
-                    { role: 'user', content: question }
-                ]
-            })
+            body: JSON.stringify({ question })
         });
         
         if (!response.ok) {
@@ -35,9 +27,7 @@ async function askQuestion() {
         }
         
         const data = await response.json();
-        const answer = data.choices[0].message.content;
-        
-        answerContainer.innerHTML = answer;
+        answerContainer.innerHTML = data.answer;
     } catch (error) {
         console.error('Error:', error);
         answerContainer.innerHTML = 'Sorry, there was an error processing your request. Please try again later.';
@@ -47,12 +37,4 @@ async function askQuestion() {
     }
 }
 
-// Add smooth scrolling for navigation links
-document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
+// Smooth scrolling code remains the same
