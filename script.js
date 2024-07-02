@@ -13,7 +13,8 @@ async function askQuestion() {
     askButton.disabled = true;
     
     try {
-        const response = await fetch('https://samuel-schaible-backend-cjqeb6ist-samuel-schaibles-projects.vercel.app', {
+        console.log('Sending request to backend...');
+        const response = await fetch('https://samuel-schaible-backend.vercel.app/api/ask', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,15 +22,23 @@ async function askQuestion() {
             body: JSON.stringify({ question })
         });
         
+        console.log('Response status:', response.status);
+        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
-        answerContainer.innerHTML = data.answer;
+        console.log('Response data:', data);
+        
+        if (data.error) {
+            throw new Error(data.error);
+        }
+        
+        answerContainer.innerHTML = data.answer || 'No answer received from the server.';
     } catch (error) {
         console.error('Error:', error);
-        answerContainer.innerHTML = 'Sorry, there was an error processing your request. Please try again later.';
+        answerContainer.innerHTML = `Error: ${error.message}. Please try again later.`;
     } finally {
         askButton.disabled = false;
     }
@@ -84,3 +93,14 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
 
 // Initialize
 scrollFunction();
+
+// Event listener for the ask button
+document.getElementById('ask-button').addEventListener('click', askQuestion);
+
+// Event listener for pressing Enter in the question input
+document.getElementById('user-question').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        askQuestion();
+    }
+});
