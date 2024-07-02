@@ -2,7 +2,6 @@
 async function askQuestion() {
     const question = document.getElementById('user-question').value;
     const answerContainer = document.getElementById('answer-container');
-    const loadingAnimation = document.getElementById('loading-animation');
     const askButton = document.getElementById('ask-button');
     
     if (!question.trim()) {
@@ -10,8 +9,7 @@ async function askQuestion() {
         return;
     }
     
-    answerContainer.innerHTML = '';
-    loadingAnimation.classList.remove('hidden');
+    answerContainer.innerHTML = 'Thinking...';
     askButton.disabled = true;
     
     try {
@@ -33,7 +31,6 @@ async function askQuestion() {
         console.error('Error:', error);
         answerContainer.innerHTML = 'Sorry, there was an error processing your request. Please try again later.';
     } finally {
-        loadingAnimation.classList.add('hidden');
         askButton.disabled = false;
     }
 }
